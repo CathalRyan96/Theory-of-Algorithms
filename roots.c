@@ -13,9 +13,15 @@ unsigned int primes[] = {
 
 
 int main(int argc, char *arg[]) {
-     for (int i = 0; i< 64; i++)
-       printf("%3d -> %f\n", primes[i], cbrt((double)primes[i]));
 
+      double cuberoot;
+      double fraction;
+
+ for (int i = 0; i< 64; i++){
+     cuberoot = cbrt((double) primes[i]);
+     fraction = cuberoot -floor(cuberoot);
+     printf("%3d -> %f -> %f\n", primes[i], cuberoot, fraction);
+}
 
 
 
