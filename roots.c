@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdint.h>
 
 unsigned int primes[] = {
      2,   3,   5,   7,  11,  13,  17,  19,  23,  29,
@@ -14,13 +15,16 @@ unsigned int primes[] = {
 
 int main(int argc, char *arg[]) {
 
-      double cuberoot;
-      double fraction;
+     long double cuberoot;
+     long double fraction;
+     long double multiply;
 
  for (int i = 0; i< 64; i++){
-     cuberoot = cbrt((double) primes[i]);
-     fraction = cuberoot -floor(cuberoot);
-     printf("%3d -> %f -> %f\n", primes[i], cuberoot, fraction);
+     cuberoot = cbrtl((long double) primes[i]);
+     fraction = cuberoot -floorl(cuberoot);
+     multiply = fraction * 0x100000000;
+     multiply =  floorl (multiply);
+     printf("%3d -> %3.6Lf -> %0.3Lf -> %08x\n", primes[i], cuberoot, fraction,(uint32_t) multiply);
 }
 
 
